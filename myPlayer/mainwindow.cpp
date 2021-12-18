@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton->setEnabled(false);
     ui->slider_process->setEnabled(false);
     ui->slider_Volumn->setEnabled(false);
-    videos = getInfoIn("/Users/chantchan/grade3/User Interface/coursework3/videos");
+    videos = getInfoIn("E:CS/S5/User Interface/CW3-UI/videos");
     std::cout << videos.size() << std::endl;
 
     ui->thebutton_1->init(&videos.at(1));
