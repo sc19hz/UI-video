@@ -1,2 +1,2 @@
 # UI-video
-CW3
+Video open:write the absolute route on the commandline argunemts
