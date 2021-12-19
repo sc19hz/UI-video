@@ -123,7 +123,8 @@ void MainWindow::on_pushButton_4_clicked(bool checked)
 {
     currentMediaFileName = QFileDialog::getOpenFileName(this, tr("Open File"), "/chantchan",
                                                     tr("Images (*.png *.xpm *.jpg), Media (*.mp4 *.*)"));
-
+    if(currentMediaFileName.isEmpty())
+        return;
     playList->addMedia(QUrl::fromLocalFile(currentMediaFileName));
     playList->next();
 
