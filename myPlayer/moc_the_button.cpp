@@ -20,30 +20,30 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_TheButton_t {
+struct qt_meta_stringdata_the_button_t {
     QByteArrayData data[5];
-    char stringdata0[41];
+    char stringdata0[42];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_TheButton_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_the_button_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_TheButton_t qt_meta_stringdata_TheButton = {
+static const qt_meta_stringdata_the_button_t qt_meta_stringdata_the_button = {
     {
-QT_MOC_LITERAL(0, 0, 9), // "TheButton"
-QT_MOC_LITERAL(1, 10, 6), // "jumpTo"
-QT_MOC_LITERAL(2, 17, 0), // ""
-QT_MOC_LITERAL(3, 18, 14), // "TheButtonInfo*"
-QT_MOC_LITERAL(4, 33, 7) // "clicked"
+QT_MOC_LITERAL(0, 0, 10), // "the_button"
+QT_MOC_LITERAL(1, 11, 6), // "jumpTo"
+QT_MOC_LITERAL(2, 18, 0), // ""
+QT_MOC_LITERAL(3, 19, 14), // "TheButtonInfo*"
+QT_MOC_LITERAL(4, 34, 7) // "clicked"
 
     },
-    "TheButton\0jumpTo\0\0TheButtonInfo*\0"
+    "the_button\0jumpTo\0\0TheButtonInfo*\0"
     "clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_TheButton[] = {
+static const uint qt_meta_data_the_button[] = {
 
  // content:
        7,       // revision
@@ -71,10 +71,10 @@ static const uint qt_meta_data_TheButton[] = {
        0        // eod
 };
 
-void TheButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void the_button::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        TheButton *_t = static_cast<TheButton *>(_o);
+        the_button *_t = static_cast<the_button *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->jumpTo((*reinterpret_cast< TheButtonInfo*(*)>(_a[1]))); break;
@@ -84,8 +84,8 @@ void TheButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            typedef void (TheButton::*_t)(TheButtonInfo * );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TheButton::jumpTo)) {
+            typedef void (the_button::*_t)(TheButtonInfo * );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&the_button::jumpTo)) {
                 *result = 0;
                 return;
             }
@@ -93,26 +93,26 @@ void TheButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     }
 }
 
-const QMetaObject TheButton::staticMetaObject = {
-    { &QPushButton::staticMetaObject, qt_meta_stringdata_TheButton.data,
-      qt_meta_data_TheButton,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject the_button::staticMetaObject = {
+    { &QPushButton::staticMetaObject, qt_meta_stringdata_the_button.data,
+      qt_meta_data_the_button,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *TheButton::metaObject() const
+const QMetaObject *the_button::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *TheButton::qt_metacast(const char *_clname)
+void *the_button::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_TheButton.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_the_button.stringdata0))
         return static_cast<void*>(this);
     return QPushButton::qt_metacast(_clname);
 }
 
-int TheButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int the_button::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QPushButton::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -130,7 +130,7 @@ int TheButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void TheButton::jumpTo(TheButtonInfo * _t1)
+void the_button::jumpTo(TheButtonInfo * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
