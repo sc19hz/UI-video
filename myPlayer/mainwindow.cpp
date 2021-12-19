@@ -72,15 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
     play->setPlaylist(playList);
     play->setVideoOutput(ui->videoOutPut);
 
-    play_1 = new QMediaPlayer();
-    playList_1 = new QMediaPlaylist();
-    play_1->setPlaylist(playList_1);
-    play_1->setVideoOutput(ui->videoOutPut_1);
 
-    play_2 = new QMediaPlayer();
-    playList_2 = new QMediaPlaylist();
-    play_2->setPlaylist(playList_2);
-    play_2->setVideoOutput(ui->videoOutPut_2);
 
     ui->pushButton_3->setEnabled(false);
     ui->pushButton_2->setEnabled(false);
@@ -95,42 +87,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->thebutton_3->init(&videos.at(3));
 
 }
-
-
-MainWindow::MainWindow(QString sourceDir) :
-    ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-
-    play = new QMediaPlayer();
-    playList = new QMediaPlaylist();
-    play->setPlaylist(playList);
-    play->setVideoOutput(ui->videoOutPut);
-
-    play_1 = new QMediaPlayer();
-    playList_1 = new QMediaPlaylist();
-    play_1->setPlaylist(playList_1);
-    play_1->setVideoOutput(ui->videoOutPut_1);
-
-    play_2 = new QMediaPlayer();
-    playList_2 = new QMediaPlaylist();
-    play_2->setPlaylist(playList_2);
-    play_2->setVideoOutput(ui->videoOutPut_2);
-
-    ui->pushButton_3->setEnabled(false);
-    ui->pushButton_2->setEnabled(false);
-    ui->pushButton->setEnabled(false);
-    ui->slider_process->setEnabled(false);
-    ui->slider_Volumn->setEnabled(false);
-    videos = getInfoIn(sourceDir.toStdString());
-    std::cout << videos.size() << std::endl;
-
-    ui->thebutton_1->init(&videos.at(1));
-    ui->thebutton_2->init(&videos.at(2));
-    ui->thebutton_3->init(&videos.at(3));
-
-}
-
 
 MainWindow::~MainWindow()
 {
@@ -251,50 +207,83 @@ void MainWindow::on_slider_process_sliderReleased()
 
 void MainWindow::on_thebutton_1_clicked(bool checked)
 {
+    play_state = true;
+    playList->addMedia(QMediaContent(*(ui->thebutton_1->info->url)));
+    ui->pushButton->setEnabled(true);
+    ui->pushButton_2->setEnabled(true);
+    ui->pushButton_3->setEnabled(true);
+    ui->slider_process->setEnabled(true);
+    ui->slider_process->setRange(0, maxValue);
 
-    if(play_1_state)
-    {
-        play_1->pause();
-    }
-    else
-    {
-        playList_1->addMedia(QMediaContent(*(ui->thebutton_1->info->url)));
-        playList_1->next();
-        play_1->play();
-    }
-    play_1_state = !play_1_state;
+    ui->slider_Volumn->setEnabled(true);
+    timer = new QTimer();
+    timer->setInterval(1000);
+    timer->start();
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimerOut()));
+
+    ui->pushButton_3->setText("pause");
+    playList->next();
+    play->play();
 
 //    ui->thebutton_1->info->url
 }
 
 void MainWindow::on_thebutton_2_clicked(bool checked)
 {
-    if(play_2_state)
-    {
-        play_2->pause();
-    }
-    else
-    {
-        playList_2->addMedia(QMediaContent(*(ui->thebutton_2->info->url)));
-        playList_2->next();
-        play_2->setVolume(false);
-        play_2->play();
-    }
-    play_2_state = !play_2_state;
+
+    play_state = true;
+    playList->addMedia(QMediaContent(*(ui->thebutton_2->info->url)));
+    ui->pushButton->setEnabled(true);
+    ui->pushButton_2->setEnabled(true);
+    ui->pushButton_3->setEnabled(true);
+    ui->slider_process->setEnabled(true);
+    ui->slider_process->setRange(0, maxValue);
+
+    ui->slider_Volumn->setEnabled(true);
+    timer = new QTimer();
+    timer->setInterval(1000);
+    timer->start();
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimerOut()));
+
+    ui->pushButton_3->setText("pause");
+    playList->next();
+    play->play();
+
+//    if(play_state)
+//    {
+//        play->pause();
+//    }
+//    else
+//    {
+//        playList->addMedia(QMediaContent(*(ui->thebutton_1->info->url)));
+//        playList->next();
+//        play->play();
+//    }
+//    play_state = !play_state;
+
+//    ui->thebutton_1->info->url
 }
 
 void MainWindow::on_thebutton_3_clicked(bool checked)
 {
-    if(play_2_state)
-    {
-        play_2->pause();
-    }
-    else
-    {
-        playList_2->addMedia(QMediaContent(*(ui->thebutton_3->info->url)));
-        playList_2->next();
-        play_2->setVolume(false);
-        play_2->play();
-    }
-    play_2_state = !play_2_state;
+    play_state = true;
+    playList->addMedia(QMediaContent(*(ui->thebutton_3->info->url)));
+    ui->pushButton->setEnabled(true);
+    ui->pushButton_2->setEnabled(true);
+    ui->pushButton_3->setEnabled(true);
+    ui->slider_process->setEnabled(true);
+    ui->slider_process->setRange(0, maxValue);
+
+    ui->slider_Volumn->setEnabled(true);
+    timer = new QTimer();
+    timer->setInterval(1000);
+    timer->start();
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimerOut()));
+
+    ui->pushButton_3->setText("pause");
+    playList->next();
+    play->play();
 }
