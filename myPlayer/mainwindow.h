@@ -17,7 +17,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+//    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QString sourceDir);
     ~MainWindow();
 
 private slots:
@@ -27,7 +28,7 @@ private slots:
 
     void on_pushButton_3_clicked(bool checked); // pause video
 
-    void on_pushButton_pressed(); // full screen
+//    void on_pushButton_pressed(); // full screen
 
     void onTimerOut();
 
@@ -42,6 +43,10 @@ private slots:
     void on_slider_process_sliderReleased();
 
 //    void keyPressEvent(QKeyEvent *keyset);
+
+    void on_pushButton_6_clicked(bool checked);
+
+    void on_pushButton_5_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
