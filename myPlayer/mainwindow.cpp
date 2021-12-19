@@ -82,11 +82,37 @@ MainWindow::MainWindow(QWidget *parent) :
     videos = getInfoIn("/Users/chantchan/grade3/User Interface/coursework3/videos");
     std::cout << videos.size() << std::endl;
 
-    ui->thebutton_1->init(&videos.at(1));
-    ui->thebutton_2->init(&videos.at(2));
-    ui->thebutton_3->init(&videos.at(3));
+    ui->thebutton_1->init(&videos.at(0));
+    ui->thebutton_2->init(&videos.at(1));
+    ui->thebutton_3->init(&videos.at(2));
 
 }
+MainWindow::MainWindow(QString sourceDir) :
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+
+    play = new QMediaPlayer();
+    playList = new QMediaPlaylist();
+    play->setPlaylist(playList);
+    play->setVideoOutput(ui->videoOutPut);
+
+
+
+    ui->pushButton_3->setEnabled(false);
+    ui->pushButton_2->setEnabled(false);
+    ui->pushButton->setEnabled(false);
+    ui->slider_process->setEnabled(false);
+    ui->slider_Volumn->setEnabled(false);
+    videos = getInfoIn(sourceDir.toStdString());
+    std::cout << videos.size() << std::endl;
+
+    ui->thebutton_1->init(&videos.at(0));
+    ui->thebutton_2->init(&videos.at(1));
+    ui->thebutton_3->init(&videos.at(2));
+
+}
+
 
 MainWindow::~MainWindow()
 {
