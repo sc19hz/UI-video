@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QString sourceDir);
     ~MainWindow();
 
 private slots:
@@ -46,6 +47,8 @@ private slots:
     void on_thebutton_1_clicked(bool checked);
 
     void on_thebutton_2_clicked(bool checked);
+
+    void on_thebutton_3_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
