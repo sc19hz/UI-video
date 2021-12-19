@@ -7,6 +7,16 @@
 #include <QtCore/QDirIterator>
 #include <QImageReader>
 
+bool play_state;
+
+bool if_reload=false;
+
+bool state_slider_volume = false;
+
+bool full_screen = false;
+
+QTimer *timer;          //播放计时器
+
 class TheButtonInfo {
 
 public:
@@ -54,45 +64,6 @@ std::vector<TheButtonInfo> getInfoIn (std::string loc) {
     return out;
 }
 
-
-bool play_state;
-
-bool if_reload=false;
-
-bool state_slider_volume = false;
-
-bool full_screen = false;
-
-QTimer *timer;          //播放计时器
-int maxValue = 1000;    //进度条最大值
-
-
-
-//MainWindow::MainWindow(QWidget *parent) :
-//    QMainWindow(parent),
-//    ui(new Ui::MainWindow)
-//{
-
-
-//    ui->setupUi(this);
-//    play = new QMediaPlayer();
-//    playList = new QMediaPlaylist();
-
-//    play->setPlaylist(playList);
-//    play->setVideoOutput(ui->videoOutPut);
-//    ui->pushButton_3->setEnabled(false);
-////    ui->pushButton_2->setEnabled(false);
-////    ui->pushButton->setEnabled(false);
-//    ui->slider_process->setEnabled(false);
-////    ui->slider_Volumn->setEnabled(false);
-//    std::vector<TheButtonInfo> videos;
-//    videos = getInfoIn("/Users/chantchan/grade3/User Interface/coursework3/videos");
-//    for(int i = 0; i < 4; ++i)
-//    {
-//        playList->addMedia(QMediaContent(*(videos.at(i).url)));
-//    }
-
-//}
 MainWindow::MainWindow(QString sourceDir):
     ui(new Ui::MainWindow)
 {
@@ -142,7 +113,7 @@ void MainWindow::on_pushButton_4_clicked(bool checked)
 //    ui->pushButton_2->setEnabled(true);
     ui->pushButton_3->setEnabled(true);
     ui->slider_process->setEnabled(true);
-    ui->slider_process->setRange(0, maxValue);
+    ui->slider_process->setRange(0, 1000);
 
 //    ui->slider_Volumn->setEnabled(true);
     timer = new QTimer();
@@ -204,19 +175,19 @@ void MainWindow::on_pushButton_3_clicked(bool checked)
 //}
 void MainWindow::onTimerOut()
 {
-    ui->slider_process->setValue(play->position() * maxValue / play->duration());
+    ui->slider_process->setValue(play->position() * 1000 / play->duration());
 }
 
 void MainWindow::slider_process_clicked()
 {
-    play->setPosition(ui->slider_process->value() * play->duration() / maxValue);
+    play->setPosition(ui->slider_process->value() * play->duration() / 1000);
 }
 
 
 void MainWindow::slider_process_moved()
 {
     timer->stop();
-    play->setPosition(ui->slider_process->value() * play->duration() / maxValue);
+    play->setPosition(ui->slider_process->value() * play->duration() / 1000);
 }
 
 
@@ -228,7 +199,7 @@ void MainWindow::slider_process_released()
 void MainWindow::on_slider_process_sliderMoved()
 {
     timer->stop();
-    play->setPosition(ui->slider_process->value() * play->duration() / maxValue);
+    play->setPosition(ui->slider_process->value() * play->duration() / 1000);
 }
 
 void MainWindow::on_slider_process_sliderReleased()
@@ -245,7 +216,7 @@ void MainWindow::on_pushButton_6_clicked(bool checked)
 //    ui->pushButton_2->setEnabled(true);
     ui->pushButton_3->setEnabled(true);
     ui->slider_process->setEnabled(true);
-    ui->slider_process->setRange(0, maxValue);
+    ui->slider_process->setRange(0, 1000);
 
 //    ui->slider_Volumn->setEnabled(true);
     timer = new QTimer();
@@ -265,7 +236,7 @@ void MainWindow::on_pushButton_5_clicked(bool checked)
 //    ui->pushButton_2->setEnabled(true);
     ui->pushButton_3->setEnabled(true);
     ui->slider_process->setEnabled(true);
-    ui->slider_process->setRange(0, maxValue);
+    ui->slider_process->setRange(0, 1000);
 
 //    ui->slider_Volumn->setEnabled(true);
     timer = new QTimer();
